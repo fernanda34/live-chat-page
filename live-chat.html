@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat Loading</title>
+    <style>
+        /* CSS untuk background loading */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f3f3;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+
+    <script type="text/javascript">
+        // Memuat script live chat
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "310bfccd-dda0-4122-a3e8-ed3fadd8daa6";
+        (function () {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            s.onload = function() {
+                // Menghilangkan animasi loading saat chat terbuka
+                document.querySelector('.loader').style.display = 'none';
+
+                // Secara otomatis membuka chat window
+                $crisp.push(["do", "chat:open"]);
+            };
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+</body>
+</html>
